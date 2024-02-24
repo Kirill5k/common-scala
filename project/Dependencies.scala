@@ -22,4 +22,8 @@ object Dependencies {
     Libraries.mockito
   )
 
+  val test = Seq(
+    Libraries.scalaTest % Test,
+    Libraries.mockito % Test
+  )
 }

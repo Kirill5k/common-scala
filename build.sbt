@@ -13,6 +13,14 @@ val noPublish = Seq(
   publish / skip  := true
 )
 
+val syntax = project
+  .in(file("modules/syntax"))
+  .settings(
+    name       := "common-syntax",
+    moduleName := "common-syntax",
+    libraryDependencies ++= Dependencies.test
+  )
+
 val catsTest = project
   .in(file("modules/cats-test"))
   .settings(
