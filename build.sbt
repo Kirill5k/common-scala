@@ -13,12 +13,12 @@ val noPublish = Seq(
   publish / skip  := true
 )
 
-val testing = project
-  .in(file("modules/testing"))
+val catsTest = project
+  .in(file("modules/cats-test"))
   .settings(
-    name       := "common-testing",
-    moduleName := "common-testing",
-    libraryDependencies ++= Dependencies.testing
+    name       := "common-cats-test",
+    moduleName := "common-cats-test",
+    libraryDependencies ++= Dependencies.catsTest
   )
 
 val root = project
@@ -27,4 +27,4 @@ val root = project
   .settings(
     name := "common-scala"
   )
-  .aggregate(testing)
+  .aggregate(catsTest)

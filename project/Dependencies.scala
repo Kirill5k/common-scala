@@ -16,7 +16,7 @@ object Dependencies {
     val mockito   = "org.scalatestplus" %% "mockito-4-11" % Versions.mockito
   }
 
-  val testing = Seq(
+  val catsTest = Seq(
     Libraries.fs2,
     Libraries.scalaTest,
     Libraries.mockito

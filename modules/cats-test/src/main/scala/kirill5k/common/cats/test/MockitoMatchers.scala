@@ -1,4 +1,4 @@
-package kirill5k.common.testing
+package kirill5k.common.cats.test
 
 import cats.effect.IO
 import org.mockito.stubbing.{Answer, OngoingStubbing, Stubber}
