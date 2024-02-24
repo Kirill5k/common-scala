@@ -1,4 +1,4 @@
-package io.github.kirill5k.template
+package kirill5k.common.testing
 
 import scala.io.Source
 

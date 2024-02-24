@@ -1,8 +1,6 @@
-import com.typesafe.sbt.packager.docker._
 import sbtghactions.JavaSpec
 
-ThisBuild / scalaVersion                        := "3.3.0"
-ThisBuild / version                             := scala.sys.process.Process("git rev-parse HEAD").!!.trim.slice(0, 7)
+ThisBuild / scalaVersion                        := "3.3.1"
 ThisBuild / organization                        := "io.github.kirill5k"
 ThisBuild / githubWorkflowPublishTargetBranches := Nil
 ThisBuild / githubWorkflowJavaVersions          := Seq(JavaSpec.temurin("20"))
@@ -15,36 +13,18 @@ val noPublish = Seq(
   publish / skip  := true
 )
 
-val docker = Seq(
-  packageName        := moduleName.value,
-  version            := version.value,
-  maintainer         := "immotional@aol.com",
-  dockerBaseImage    := "amazoncorretto:20.0.0-alpine",
-  dockerUpdateLatest := true,
-  makeBatScripts     := Nil,
-  dockerCommands := {
-    val commands         = dockerCommands.value
-    val (stage0, stage1) = commands.span(_ != DockerStageBreak)
-    val (before, after)  = stage1.splitAt(4)
-    val installBash      = Cmd("RUN", "apk update && apk upgrade && apk add bash")
-    stage0 ++ before ++ List(installBash) ++ after
-  }
-)
-
-val core = project
-  .in(file("modules/core"))
-  .enablePlugins(JavaAppPackaging, JavaAgent, DockerPlugin)
-  .settings(docker)
+val testing = project
+  .in(file("modules/testing"))
   .settings(
-    name       := "template-project-core",
-    moduleName := "template-project-core",
-    libraryDependencies ++= Dependencies.core ++ Dependencies.test
+    name       := "common-testing",
+    moduleName := "common-testing",
+    libraryDependencies ++= Dependencies.testing
   )
 
 val root = project
   .in(file("."))
   .settings(noPublish)
   .settings(
-    name := "template-project"
+    name := "common-scala"
   )
-  .aggregate(core)
+  .aggregate(testing)
