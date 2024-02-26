@@ -1,10 +1,25 @@
 import sbtghactions.JavaSpec
 
-ThisBuild / scalaVersion                        := "3.3.1"
-ThisBuild / organization                        := "io.github.kirill5k"
-ThisBuild / githubWorkflowPublishTargetBranches := Nil
-ThisBuild / githubWorkflowJavaVersions          := Seq(JavaSpec.temurin("20"))
-ThisBuild / scalacOptions ++= Seq("-Wunused:all")
+inThisBuild(
+  List(
+    scalaVersion := "3.3.1",
+    organization := "io.github.kirill5k",
+    homepage     := Some(url("https://github.com/sbt/sbt-ci-release")),
+    // Alternatively License.Apache2 see https://github.com/sbt/librarymanagement/blob/develop/core/src/main/scala/sbt/librarymanagement/License.scala
+    licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
+    developers := List(
+      Developer(
+        "olafurpg",
+        "Ólafur Páll Geirsson",
+        "olafurpg@gmail.com",
+        url("https://geirsson.com")
+      )
+    ),
+    githubWorkflowPublishTargetBranches := Nil,
+    githubWorkflowJavaVersions          := Seq(JavaSpec.temurin("20")),
+    scalacOptions ++= Seq("-Wunused:all")
+  )
+)
 
 val noPublish = Seq(
   publish         := {},
