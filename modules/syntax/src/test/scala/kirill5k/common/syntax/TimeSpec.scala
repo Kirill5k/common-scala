@@ -4,7 +4,8 @@ import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import kirill5k.common.syntax.time.*
 
-import java.time.Instant
+import java.time.{DayOfWeek, Instant, LocalDate}
+import java.time.temporal.ChronoUnit
 import scala.concurrent.duration.*
 
 class TimeSpec extends AnyWordSpec with Matchers {
@@ -30,7 +31,31 @@ class TimeSpec extends AnyWordSpec with Matchers {
     }
   }
 
+  "A LocalDate extension" should {
+    "convert ld to instant" in {
+      LocalDate.parse("2020-01-01").toInstantAtStartOfDay mustBe ts
+    }
+  }
+
   "An Instant extension" should {
+    "return true when 2 instances have same dates" in {
+      ts.hasSameDateAs(ts.plusSeconds(3600L)) mustBe true
+      ts.hasSameDateAs(Instant.now) mustBe false
+    }
+
+    "return current hour" in {
+      ts.hour mustBe 0
+    }
+
+    "return day of week" in {
+      ts.dayOfWeek mustBe DayOfWeek.WEDNESDAY
+    }
+
+    "change instant time" in {
+      ts.plusSeconds(3600L).atStartOfDay mustBe ts
+      ts.plusSeconds(3600L).atEndOfDay mustBe ts.plus(1, ChronoUnit.DAYS).minusSeconds(1)
+    }
+
     "return duration between 2 instances" in {
       ts.durationBetween(ts.plusSeconds(3600L)) mustBe 1.hour
     }

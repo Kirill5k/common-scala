@@ -1,7 +1,7 @@
 package kirill5k.common.syntax
 
 import java.time.temporal.ChronoUnit
-import java.time.{Instant, ZoneOffset, ZonedDateTime}
+import java.time.{DayOfWeek, Instant, LocalDate, ZoneOffset, ZonedDateTime}
 import scala.concurrent.duration.*
 import scala.util.Try
 
@@ -15,12 +15,19 @@ object time:
         case _  => dateString
       Try(Instant.parse(localDate)).toEither
 
+  extension (ld: LocalDate) def toInstantAtStartOfDay: Instant = ld.atStartOfDay().toInstant(ZoneOffset.UTC)
   extension (ts: Instant)
     def utc: ZonedDateTime                                = ts.atZone(ZoneOffset.UTC)
+    def truncatedToSeconds: Instant                       = ts.truncatedTo(ChronoUnit.SECONDS)
     def minus(duration: FiniteDuration): Instant          = ts.minusNanos(duration.toNanos)
     def plus(duration: FiniteDuration): Instant           = ts.plusNanos(duration.toNanos)
-    def truncatedToSeconds: Instant                       = ts.truncatedTo(ChronoUnit.SECONDS)
-    def durationBetween(otherTs: Instant): FiniteDuration = math.abs(ts.toEpochMilli - otherTs.toEpochMilli).millis
+    def hour: Int                                         = ts.atZone(ZoneOffset.UTC).getHour
+    def dayOfWeek: DayOfWeek                              = ts.atZone(ZoneOffset.UTC).getDayOfWeek
+    def toLocalDate: LocalDate                            = LocalDate.parse(ts.toString.slice(0, 10))
+    def atStartOfDay: Instant                             = toLocalDate.atStartOfDay().toInstant(ZoneOffset.UTC)
+    def atEndOfDay: Instant                               = toLocalDate.plusDays(1).atStartOfDay().minusSeconds(1).toInstant(ZoneOffset.UTC)
+    def durationBetween(otherTs: Instant): FiniteDuration = math.abs(otherTs.toEpochMilli - ts.toEpochMilli).millis
+    def hasSameDateAs(otherTs: Instant): Boolean          = ts.toString.slice(0, 10) == otherTs.toString.slice(0, 10)
 
   extension (fd: FiniteDuration)
     def toReadableString: String =
