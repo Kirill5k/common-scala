@@ -2,14 +2,13 @@ package kirill5k.common.test.cats
 
 import cats.effect.IO
 import cats.effect.unsafe.IORuntime
-import kirill5k.common.test.MockitoMatchers
 import org.scalatest.{Assertion, EitherValues}
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AsyncWordSpec
 
 import scala.concurrent.Future
 
-trait IOWordSpec extends AsyncWordSpec with Matchers with MockitoMatchers with EitherValues {
+trait IOWordSpec extends AsyncWordSpec with Matchers with IOMockitoMatchers with EitherValues {
 
   extension [A](io: IO[A])
     def assertVoid: Future[Assertion] = asserting(_ mustBe ())
