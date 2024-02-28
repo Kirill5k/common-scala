@@ -1,7 +1,6 @@
 name: Release
 on:
   push:
-    branches: [master, main]
     tags: ["v*"]
 jobs:
   publish:
@@ -13,7 +12,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 11
+          java-version: 20
           cache: sbt
       - run: sbt ci-release
         env:
