@@ -42,4 +42,4 @@ val root = project
   .settings(
     name := "common-scala"
   )
-  .aggregate(catsTest)
+  .aggregate(catsTest, syntax)
