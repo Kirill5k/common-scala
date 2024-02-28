@@ -37,7 +37,7 @@ val test = project
   )
 
 val catsTest = project
-  .in(file("modules/cats-test"))
+  .in(file("modules/test-cats"))
   .dependsOn(test)
   .settings(
     name       := "common-test-cats",
