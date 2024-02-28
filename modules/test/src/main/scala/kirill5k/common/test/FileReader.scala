@@ -1,4 +1,4 @@
-package kirill5k.common.cats.test
+package kirill5k.common.test
 
 import scala.io.Source
 

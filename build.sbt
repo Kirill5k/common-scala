@@ -25,15 +25,24 @@ val syntax = project
   .settings(
     name       := "common-syntax",
     moduleName := "common-syntax",
+    libraryDependencies ++= Dependencies.syntax
+  )
+
+val test = project
+  .in(file("modules/test"))
+  .settings(
+    name       := "common-test",
+    moduleName := "common-test",
     libraryDependencies ++= Dependencies.test
   )
 
 val catsTest = project
   .in(file("modules/cats-test"))
+  .dependsOn(test)
   .settings(
-    name       := "common-cats-test",
-    moduleName := "common-cats-test",
-    libraryDependencies ++= Dependencies.catsTest
+    name       := "common-test-cats",
+    moduleName := "common-test-cats",
+    libraryDependencies ++= Dependencies.testCats
   )
 
 val root = project
@@ -42,4 +51,4 @@ val root = project
   .settings(
     name := "common-scala"
   )
-  .aggregate(catsTest, syntax)
+  .aggregate(test, catsTest, syntax)

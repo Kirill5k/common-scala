@@ -1,7 +1,8 @@
-package kirill5k.common.cats.test
+package kirill5k.common.test.cats
 
 import cats.effect.IO
 import cats.effect.unsafe.IORuntime
+import kirill5k.common.test.MockitoMatchers
 import org.scalatest.{Assertion, EitherValues}
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AsyncWordSpec
