@@ -2,9 +2,9 @@ package kirill5k.common.syntax
 
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.wordspec.AnyWordSpec
-import kirill5k.common.syntax.predicates.*
+import kirill5k.common.syntax.predicate.*
 
-class PredicatesSpec extends AnyWordSpec with Matchers {
+class PredicateSpec extends AnyWordSpec with Matchers {
 
   "Predicates syntax" should {
     "chain 2 predicates together" in {
