@@ -29,4 +29,8 @@ object Dependencies {
     Libraries.scalaTest % Test,
     Libraries.mockito   % Test
   )
+
+  val syntaxCats = Seq(
+    Libraries.fs2
+  )
 }
