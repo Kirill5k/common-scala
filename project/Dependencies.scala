@@ -32,7 +32,7 @@ object Dependencies {
     Libraries.mockito   % Test
   )
 
-  val syntaxCats = Seq(
+  val cats = Seq(
     Libraries.fs2,
     Libraries.log4cats
   )

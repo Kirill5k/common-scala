@@ -20,6 +20,14 @@ val noPublish = Seq(
   publish / skip  := true
 )
 
+val cats = project
+  .in(file("modules/cats"))
+  .settings(
+    name       := "common-cats",
+    moduleName := "common-cats",
+    libraryDependencies ++= Dependencies.cats
+  )
+
 val syntax = project
   .in(file("modules/syntax"))
   .settings(
@@ -33,7 +41,7 @@ val syntaxCats = project
   .settings(
     name       := "common-syntax-cats",
     moduleName := "common-syntax-cats",
-    libraryDependencies ++= Dependencies.syntaxCats
+    libraryDependencies ++= Dependencies.cats
   )
 
 val test = project
@@ -59,4 +67,4 @@ val root = project
   .settings(
     name := "common-scala"
   )
-  .aggregate(test, catsTest, syntax, syntaxCats)
+  .aggregate(test, catsTest, syntax, syntaxCats, cats)
