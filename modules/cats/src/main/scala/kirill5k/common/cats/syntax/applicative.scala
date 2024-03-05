@@ -1,4 +1,4 @@
-package kirill5k.common.syntax.cats
+package kirill5k.common.cats.syntax
 
 import cats.Applicative
 import cats.syntax.functor.*
