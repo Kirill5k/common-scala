@@ -36,15 +36,6 @@ val test = project
     libraryDependencies ++= Dependencies.test
   )
 
-val catsTest = project
-  .in(file("modules/cats-test"))
-  .dependsOn(test)
-  .settings(
-    name       := "common-cats-test",
-    moduleName := "common-cats-test",
-    libraryDependencies ++= Dependencies.catsTest
-  )
-
 val cats = project
   .in(file("modules/cats"))
   .dependsOn(catsTest % "test->compile")
@@ -54,10 +45,19 @@ val cats = project
     libraryDependencies ++= Dependencies.cats
   )
 
+val catsTest = project
+  .in(file("modules/cats-test"))
+  .dependsOn(test)
+  .settings(
+    name       := "common-cats-test",
+    moduleName := "common-cats-test",
+    libraryDependencies ++= Dependencies.catsTest
+  )
+
 val root = project
   .in(file("."))
   .settings(noPublish)
   .settings(
     name := "common-scala"
   )
-  .aggregate(test, catsTest, syntax, cats)
+  .aggregate(cats, test, catsTest, syntax)
