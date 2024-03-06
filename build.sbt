@@ -37,12 +37,12 @@ val test = project
   )
 
 val catsTest = project
-  .in(file("modules/test-cats"))
+  .in(file("modules/cats-test"))
   .dependsOn(test)
   .settings(
-    name       := "common-test-cats",
-    moduleName := "common-test-cats",
-    libraryDependencies ++= Dependencies.testCats
+    name       := "common-cats-test",
+    moduleName := "common-cats-test",
+    libraryDependencies ++= Dependencies.catsTest
   )
 
 val cats = project

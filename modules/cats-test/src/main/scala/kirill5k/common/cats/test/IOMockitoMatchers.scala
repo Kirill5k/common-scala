@@ -1,4 +1,4 @@
-package kirill5k.common.test.cats
+package kirill5k.common.cats.test
 
 import cats.effect.IO
 import kirill5k.common.test.MockitoMatchers

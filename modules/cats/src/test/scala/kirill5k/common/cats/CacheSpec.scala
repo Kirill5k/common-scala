@@ -1,7 +1,7 @@
 package kirill5k.common.cats
 
 import cats.effect.IO
-import kirill5k.common.test.cats.IOWordSpec
+import kirill5k.common.cats.test.IOWordSpec
 
 import scala.concurrent.duration.*
 

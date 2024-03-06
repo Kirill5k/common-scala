@@ -23,10 +23,6 @@ object Dependencies {
     Libraries.mockito
   )
 
-  val testCats = Seq(
-    Libraries.fs2
-  )
-
   val syntax = Seq(
     Libraries.scalaTest % Test,
     Libraries.mockito   % Test
@@ -35,5 +31,9 @@ object Dependencies {
   val cats = Seq(
     Libraries.fs2,
     Libraries.log4cats
+  )
+
+  val catsTest = Seq(
+    Libraries.fs2
   )
 }
