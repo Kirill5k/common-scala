@@ -7,6 +7,7 @@ import org.scalatestplus.mockito.MockitoSugar
 
 trait MockitoMatchers extends MockitoSugar:
   def any[A]: A                                      = ArgumentMatchers.any[A]()
+  def anyBoolean: Boolean                            = ArgumentMatchers.anyBoolean()
   def eqTo[A](value: A): A                           = ArgumentMatchers.eq[A](value)
   def doAnswer[A](answer: Answer[A]): Stubber        = Mockito.doAnswer(answer)
   def doThrow[A](error: Throwable): Stubber          = Mockito.doThrow(error)
