@@ -26,5 +26,5 @@ object Server:
       .build
       .use(_ => Async[F].never)
 
-  def serve[F[_]](config: ServerConfig, routes: HttpRoutes[F])(using F: Async[F]): Stream[F, Unit] =
+  def serveEmber[F[_]](config: ServerConfig, routes: HttpRoutes[F])(using F: Async[F]): Stream[F, Unit] =
     Stream.eval(ember(config, routes)).drain
