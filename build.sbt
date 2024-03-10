@@ -54,10 +54,18 @@ val cats = project
     libraryDependencies ++= Dependencies.cats
   )
 
+val http4s = project
+  .in(file("modules/http4s"))
+  .settings(
+    name       := "common-http4s",
+    moduleName := "common-http4s",
+    libraryDependencies ++= Dependencies.http4s
+  )
+
 val root = project
   .in(file("."))
   .settings(noPublish)
   .settings(
     name := "common-scala"
   )
-  .aggregate(test, catsTest, cats, syntax)
+  .aggregate(test, catsTest, cats, syntax, http4s)
