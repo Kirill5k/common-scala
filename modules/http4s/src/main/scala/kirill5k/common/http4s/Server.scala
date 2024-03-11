@@ -9,14 +9,14 @@ import org.http4s.ember.server.EmberServerBuilder
 
 import scala.concurrent.duration.*
 
-final case class ServerConfig(
-    host: String,
-    port: Int,
-    idleTimeout: FiniteDuration = 1.hour
-)
-
 object Server:
-  def ember[F[_]](config: ServerConfig, routes: HttpRoutes[F])(using F: Async[F]): F[Unit] =
+  final case class Config(
+      host: String,
+      port: Int,
+      idleTimeout: FiniteDuration = 1.hour
+  )
+
+  def ember[F[_]](config: Config, routes: HttpRoutes[F])(using F: Async[F]): F[Unit] =
     EmberServerBuilder
       .default(using F, Network.forAsync[F])
       .withHost(Ipv4Address.fromString(config.host).get)
@@ -26,5 +26,5 @@ object Server:
       .build
       .use(_ => Async[F].never)
 
-  def serveEmber[F[_]](config: ServerConfig, routes: HttpRoutes[F])(using F: Async[F]): Stream[F, Unit] =
+  def serveEmber[F[_]](config: Config, routes: HttpRoutes[F])(using F: Async[F]): Stream[F, Unit] =
     Stream.eval(ember(config, routes)).drain
