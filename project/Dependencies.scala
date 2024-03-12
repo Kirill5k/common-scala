@@ -50,4 +50,8 @@ object Dependencies {
   val catsTest = Seq(
     Libraries.fs2
   )
+
+  val http4sTest = Seq(
+    Libraries.http4s.dsl
+  )
 }
