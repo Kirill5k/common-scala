@@ -64,7 +64,7 @@ val http4s = project
 
 val http4sTest = project
   .in(file("modules/http4s-test"))
-  .dependsOn(test)
+  .dependsOn(catsTest)
   .settings(
     name       := "common-http4s-test",
     moduleName := "common-http4s-test",
