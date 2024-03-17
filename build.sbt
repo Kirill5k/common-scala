@@ -71,6 +71,15 @@ val http4sTest = project
     libraryDependencies ++= Dependencies.http4sTest
   )
 
+val sttpTest = project
+  .in(file("modules/sttp-test"))
+  .dependsOn(catsTest)
+  .settings(
+    name       := "common-sttp-test",
+    moduleName := "common-sttp-test",
+    libraryDependencies ++= Dependencies.sttpTest
+  )
+
 val root = project
   .in(file("."))
   .settings(noPublish)

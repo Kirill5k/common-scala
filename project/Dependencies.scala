@@ -7,6 +7,7 @@ object Dependencies {
     val log4cats = "2.6.0"
     val http4s   = "0.23.24"
     val circe    = "0.14.6"
+    val sttp     = "3.9.3"
 
     val scalaTest = "3.2.18"
     val mockito   = "3.2.18.0"
@@ -23,6 +24,11 @@ object Dependencies {
 
     object circe {
       val parser = "io.circe" %% "circe-parser" % Versions.circe
+    }
+
+    object sttp {
+      val core        = "com.softwaremill.sttp.client3" %% "core" % Versions.sttp
+      val catsBackend = "com.softwaremill.sttp.client3" %% "fs2"  % Versions.sttp
     }
 
     val scalaTest = "org.scalatest"     %% "scalatest"    % Versions.scalaTest
@@ -55,5 +61,10 @@ object Dependencies {
   val http4sTest = Seq(
     Libraries.http4s.dsl,
     Libraries.circe.parser
+  )
+
+  val sttpTest = Seq(
+    Libraries.sttp.core,
+    Libraries.sttp.catsBackend,
   )
 }
