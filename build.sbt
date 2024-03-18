@@ -86,4 +86,4 @@ val root = project
   .settings(
     name := "common-scala"
   )
-  .aggregate(test, catsTest, http4sTest, cats, syntax, http4s)
+  .aggregate(test, catsTest, http4sTest, sttpTest, cats, syntax, http4s)
