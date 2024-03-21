@@ -6,8 +6,11 @@ import org.mockito.{ArgumentMatchers, Mockito}
 import org.scalatestplus.mockito.MockitoSugar
 
 trait MockitoMatchers extends MockitoSugar:
+  def never: VerificationMode                        = Mockito.never()
   def any[A]: A                                      = ArgumentMatchers.any[A]()
   def anyBoolean: Boolean                            = ArgumentMatchers.anyBoolean()
+  def anyList[A]: List[A]                            = ArgumentMatchers.any[List[A]]()
+  def anyOpt[A]: Option[A]                           = ArgumentMatchers.any[Option[A]]()
   def eqTo[A](value: A): A                           = ArgumentMatchers.eq[A](value)
   def doAnswer[A](answer: Answer[A]): Stubber        = Mockito.doAnswer(answer)
   def doThrow[A](error: Throwable): Stubber          = Mockito.doThrow(error)
