@@ -10,6 +10,7 @@ trait MockitoMatchers extends MockitoSugar:
   def never: VerificationMode                           = Mockito.never()
   def any[A]: A                                         = ArgumentMatchers.any[A]()
   def anyBoolean: Boolean                               = ArgumentMatchers.anyBoolean()
+  def anyString: String                                 = ArgumentMatchers.anyString()
   def anyList[A]: List[A]                               = ArgumentMatchers.any[List[A]]()
   def anyOpt[A]: Option[A]                              = ArgumentMatchers.any[Option[A]]()
   def eqTo[A](value: A): A                              = ArgumentMatchers.eq[A](value)
