@@ -4,6 +4,8 @@ import cats.effect.IO
 import kirill5k.common.cats.test.IOWordSpec
 import kirill5k.common.test.FileReader
 import org.scalatest.wordspec.AsyncWordSpec
+import sttp.capabilities.WebSockets
+import sttp.capabilities.fs2.Fs2Streams
 import sttp.client3
 import sttp.client3.*
 import sttp.client3.httpclient.fs2.HttpClientFs2Backend
@@ -12,7 +14,7 @@ import sttp.model.{Header, HeaderNames, MediaType, Method}
 
 trait SttpWordSpec extends IOWordSpec {
 
-  def backendStub: SttpBackendStub[IO, Any] =
+  def backendStub: SttpBackendStub[IO, Fs2Streams[IO] & WebSockets] =
     HttpClientFs2Backend.stub[IO]
 
   def readJson(path: String): String = FileReader.fromResources(path)
