@@ -20,6 +20,19 @@ trait HttpRoutesWordSpec extends AnyWordSpec with Matchers with IOMockitoMatcher
     def withAuthHeader(authHeaderValue: String = "Bearer token"): r.Self =
       r.withHeaders(r.headers.put(Header.Raw(CIString("authorization"), authHeaderValue)))
 
+  def verifyHeaders(
+      response: IO[Response[IO]],
+      headers: Map[String, String]
+  ): Assertion =
+    response
+      .map { res =>
+        val responseHeaders = res.headers.headers.map(h => h.name -> h.value).toMap
+        val assertedHeaders = headers.map((h, v) => CIString(h) -> v)
+
+        responseHeaders must contain allElementsOf assertedHeaders
+      }
+      .unsafeRunSync()(IORuntime.global)
+
   def verifyJsonResponse(
       response: IO[Response[IO]],
       expectedStatus: Status,
@@ -45,4 +58,6 @@ trait HttpRoutesWordSpec extends AnyWordSpec with Matchers with IOMockitoMatcher
   extension (res: IO[Response[IO]])
     infix def mustHaveStatus(expectedStatus: Status, expectedBody: Option[String] = None): Assertion =
       verifyJsonResponse(res, expectedStatus, expectedBody)
+    infix def mustContainHeader(expectedHeaders: Map[String, String]): Assertion =
+      verifyHeaders(res, expectedHeaders)
 }
