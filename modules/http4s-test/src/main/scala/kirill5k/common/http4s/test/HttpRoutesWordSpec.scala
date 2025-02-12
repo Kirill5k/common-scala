@@ -58,6 +58,6 @@ trait HttpRoutesWordSpec extends AnyWordSpec with Matchers with IOMockitoMatcher
   extension (res: IO[Response[IO]])
     infix def mustHaveStatus(expectedStatus: Status, expectedBody: Option[String] = None): Assertion =
       verifyJsonResponse(res, expectedStatus, expectedBody)
-    infix def mustContainHeader(expectedHeaders: Map[String, String]): Assertion =
+    infix def mustContainHeaders(expectedHeaders: Map[String, String]): Assertion =
       verifyHeaders(res, expectedHeaders)
 }
