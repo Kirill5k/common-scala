@@ -8,9 +8,9 @@ class PredicateSpec extends AnyWordSpec with Matchers {
 
   "Predicates syntax" should {
     "chain 2 predicates together" in {
-      val isGreaterThanTwo = (i: Int) => i > 2
-      val isSmallThanFive = (i: Int) => i < 5
-      val isGreaterThanTwoAndSmallThanFive = isGreaterThanTwo and isSmallThanFive
+      val isGreaterThanTwo                 = (i: Int) => i > 2
+      val isSmallThanFive                  = (i: Int) => i < 5
+      val isGreaterThanTwoAndSmallThanFive = isGreaterThanTwo.and(isSmallThanFive)
 
       isGreaterThanTwoAndSmallThanFive(3) mustBe true
       isGreaterThanTwoAndSmallThanFive(1) mustBe false

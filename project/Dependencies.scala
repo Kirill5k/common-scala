@@ -3,11 +3,12 @@ import sbt._
 object Dependencies {
 
   object Versions {
-    val fs2      = "3.11.0"
+    val fs2      = "3.12.0"
     val log4cats = "2.7.0"
     val http4s   = "0.23.30"
-    val circe    = "0.14.10"
-    val sttp     = "3.10.2"
+    val circe    = "0.14.12"
+    val sttp     = "3.10.3"
+    val sttp4    = "4.0.0"
 
     val scalaTest = "3.2.19"
     val mockito   = "3.2.18.0"
@@ -29,6 +30,11 @@ object Dependencies {
     object sttp {
       val core        = "com.softwaremill.sttp.client3" %% "core" % Versions.sttp
       val catsBackend = "com.softwaremill.sttp.client3" %% "fs2"  % Versions.sttp
+    }
+
+    object sttp4 {
+      val core        = "com.softwaremill.sttp.client4" %% "core" % Versions.sttp4
+      val catsBackend = "com.softwaremill.sttp.client4" %% "fs2"  % Versions.sttp4
     }
 
     val scalaTest = "org.scalatest"     %% "scalatest"    % Versions.scalaTest
@@ -66,5 +72,7 @@ object Dependencies {
   val sttpTest = Seq(
     Libraries.sttp.core,
     Libraries.sttp.catsBackend,
+    Libraries.sttp4.core,
+    Libraries.sttp4.catsBackend
   )
 }
