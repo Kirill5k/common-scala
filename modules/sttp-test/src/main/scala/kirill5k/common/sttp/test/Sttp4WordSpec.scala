@@ -17,7 +17,7 @@ trait Sttp4WordSpec extends IOWordSpec {
 
   def readJson(path: String): String = FileReader.fromResources(path)
 
-  extension (req: Request[?])
+  extension (req: GenericRequest[?, ?])
     def isPost: Boolean                                 = req.method == Method.POST
     def isGet: Boolean                                  = req.method == Method.GET
     def isPut: Boolean                                  = req.method == Method.PUT
