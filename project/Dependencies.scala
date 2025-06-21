@@ -4,11 +4,11 @@ object Dependencies {
 
   object Versions {
     val fs2      = "3.12.0"
-    val log4cats = "2.7.0"
+    val log4cats = "2.7.1"
     val http4s   = "0.23.30"
-    val circe    = "0.14.13"
+    val circe    = "0.14.14"
     val sttp     = "3.11.0"
-    val sttp4    = "4.0.7"
+    val sttp4    = "4.0.8"
 
     val scalaTest = "3.2.19"
     val mockito   = "3.2.18.0"
