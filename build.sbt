@@ -3,13 +3,13 @@ import org.typelevel.scalacoptions.ScalacOptions
 
 inThisBuild(
   List(
-    scalaVersion                        := "3.3.1",
+    scalaVersion                        := "3.3.6",
     organization                        := "io.github.kirill5k",
     homepage                            := Some(url("https://github.com/kirill5k/common-scala")),
     licenses                            := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
     developers                          := List(Developer("kirill5k", "Kirill", "immotional@aol.com", url("https://github.com/kirill5k"))),
     githubWorkflowPublishTargetBranches := Nil,
-    githubWorkflowJavaVersions          := Seq(JavaSpec.temurin("20")),
+    githubWorkflowJavaVersions          := Seq(JavaSpec.temurin("24")),
     scalacOptions ++= Seq("-Wunused:all")
   )
 )
