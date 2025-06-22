@@ -39,16 +39,15 @@ trait HttpRoutesWordSpec extends AnyWordSpec with Matchers with IOMockitoMatcher
       expectedBody: Option[String] = None
   ): Assertion =
     response
+      .flatTap(res => IO(res.status mustBe expectedStatus))
       .flatMap { res =>
         expectedBody match {
           case Some(expectedJson) =>
             res.as[String].map { receivedJson =>
-              res.status mustBe expectedStatus
               parse(receivedJson) mustBe parse(expectedJson)
             }
           case None =>
             res.body.compile.toVector.map { receivedJson =>
-              res.status mustBe expectedStatus
               receivedJson mustBe empty
             }
         }
