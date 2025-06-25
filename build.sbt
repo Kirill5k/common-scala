@@ -1,14 +1,15 @@
 import sbtghactions.JavaSpec
+import org.typelevel.scalacoptions.ScalacOptions
 
 inThisBuild(
   List(
-    scalaVersion                        := "3.3.1",
+    scalaVersion                        := "3.3.6",
     organization                        := "io.github.kirill5k",
     homepage                            := Some(url("https://github.com/kirill5k/common-scala")),
     licenses                            := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
     developers                          := List(Developer("kirill5k", "Kirill", "immotional@aol.com", url("https://github.com/kirill5k"))),
     githubWorkflowPublishTargetBranches := Nil,
-    githubWorkflowJavaVersions          := Seq(JavaSpec.temurin("20")),
+    githubWorkflowJavaVersions          := Seq(JavaSpec.temurin("24")),
     scalacOptions ++= Seq("-Wunused:all")
   )
 )
@@ -25,7 +26,8 @@ val syntax = project
   .settings(
     name       := "common-syntax",
     moduleName := "common-syntax",
-    libraryDependencies ++= Dependencies.syntax
+    libraryDependencies ++= Dependencies.syntax,
+    Test / tpolecatExcludeOptions += ScalacOptions.warnNonUnitStatement
   )
 
 val test = project
@@ -33,7 +35,8 @@ val test = project
   .settings(
     name       := "common-test",
     moduleName := "common-test",
-    libraryDependencies ++= Dependencies.test
+    libraryDependencies ++= Dependencies.test,
+    Test / tpolecatExcludeOptions += ScalacOptions.warnNonUnitStatement
   )
 
 val catsTest = project
@@ -42,7 +45,8 @@ val catsTest = project
   .settings(
     name       := "common-cats-test",
     moduleName := "common-cats-test",
-    libraryDependencies ++= Dependencies.catsTest
+    libraryDependencies ++= Dependencies.catsTest,
+    Test / tpolecatExcludeOptions += ScalacOptions.warnNonUnitStatement
   )
 
 val cats = project
@@ -51,7 +55,8 @@ val cats = project
   .settings(
     name       := "common-cats",
     moduleName := "common-cats",
-    libraryDependencies ++= Dependencies.cats
+    libraryDependencies ++= Dependencies.cats,
+    Test / tpolecatExcludeOptions += ScalacOptions.warnNonUnitStatement
   )
 
 val http4s = project
@@ -59,7 +64,8 @@ val http4s = project
   .settings(
     name       := "common-http4s",
     moduleName := "common-http4s",
-    libraryDependencies ++= Dependencies.http4s
+    libraryDependencies ++= Dependencies.http4s,
+    Test / tpolecatExcludeOptions += ScalacOptions.warnNonUnitStatement
   )
 
 val http4sTest = project
@@ -68,7 +74,8 @@ val http4sTest = project
   .settings(
     name       := "common-http4s-test",
     moduleName := "common-http4s-test",
-    libraryDependencies ++= Dependencies.http4sTest
+    libraryDependencies ++= Dependencies.http4sTest,
+    Test / tpolecatExcludeOptions += ScalacOptions.warnNonUnitStatement
   )
 
 val sttpTest = project
@@ -77,7 +84,8 @@ val sttpTest = project
   .settings(
     name       := "common-sttp-test",
     moduleName := "common-sttp-test",
-    libraryDependencies ++= Dependencies.sttpTest
+    libraryDependencies ++= Dependencies.sttpTest,
+    Test / tpolecatExcludeOptions += ScalacOptions.warnNonUnitStatement
   )
 
 val root = project
