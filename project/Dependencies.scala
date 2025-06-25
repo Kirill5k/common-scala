@@ -1,4 +1,4 @@
-import sbt._
+import sbt.*
 
 object Dependencies {
 
@@ -8,7 +8,7 @@ object Dependencies {
     val http4s   = "0.23.30"
     val circe    = "0.14.14"
     val sttp     = "3.11.0"
-    val sttp4    = "4.0.8"
+    val sttp4    = "4.0.9"
 
     val scalaTest = "3.2.19"
     val mockito   = "3.2.18.0"
