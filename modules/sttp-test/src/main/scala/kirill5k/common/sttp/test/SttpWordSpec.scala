@@ -31,7 +31,7 @@ trait SttpWordSpec extends IOWordSpec {
     def hasHeader(name: String, value: String): Boolean = req.headers.map(h => h.name -> h.value).toSet.contains(name -> value)
     def bodyContains(body: String): Boolean             = req.body.toString.contains(body)
     def hasParams(params: Map[String, String]): Boolean = params.toSet.subsetOf(req.uri.params.toMap.toSet[(String, String)])
-    def isGoingTo(url: String): Boolean = {
+    def isGoingTo(url: String): Boolean                 = {
       val urlParts = url.split("/")
       hasHost(urlParts.head) && req.uri.path.startsWith(urlParts.tail.filter(_.nonEmpty).toList)
     }

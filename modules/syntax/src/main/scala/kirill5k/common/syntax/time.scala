@@ -38,7 +38,7 @@ object time:
       val minutes  = remMins.toMinutes
       val remSecs  = remMins - minutes.minutes
       val seconds  = remSecs.toSeconds
-      val result =
+      val result   =
         s"""
            |${if days > 0 then s"${days}d" else ""}
            |${if hours > 0 then s"${hours}h" else ""}

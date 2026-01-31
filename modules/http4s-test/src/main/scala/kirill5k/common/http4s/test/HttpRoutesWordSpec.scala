@@ -15,8 +15,8 @@ import org.typelevel.ci.CIString
 trait HttpRoutesWordSpec extends AnyWordSpec with Matchers with IOMockitoMatchers {
 
   extension (r: Request[IO])
-    def withBody(body: String): r.Self   = r.withBodyStream(Stream.emits(body.getBytes().toList))
-    def withJsonBody(json: Json): r.Self = withBody(json.noSpaces)
+    def withBody(body: String): r.Self                                   = r.withBodyStream(Stream.emits(body.getBytes().toList))
+    def withJsonBody(json: Json): r.Self                                 = withBody(json.noSpaces)
     def withAuthHeader(authHeaderValue: String = "Bearer token"): r.Self =
       r.withHeaders(r.headers.put(Header.Raw(CIString("authorization"), authHeaderValue)))
 
