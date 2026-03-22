@@ -3,12 +3,12 @@ import sbt.*
 object Dependencies {
 
   object Versions {
-    val fs2      = "3.12.2"
-    val log4cats = "2.7.1"
+    val fs2      = "3.13.0"
+    val log4cats = "2.8.0"
     val http4s   = "0.23.33"
     val circe    = "0.14.15"
     val sttp     = "3.11.0"
-    val sttp4    = "4.0.15"
+    val sttp4    = "4.0.19"
 
     val scalaTest = "3.2.19"
     val mockito   = "3.2.18.0"
