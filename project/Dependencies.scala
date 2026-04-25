@@ -8,7 +8,7 @@ object Dependencies {
     val http4s   = "0.23.33"
     val circe    = "0.14.15"
     val sttp     = "3.11.0"
-    val sttp4    = "4.0.21"
+    val sttp4    = "4.0.24"
 
     val scalaTest = "3.2.20"
     val mockito   = "3.2.18.0"
