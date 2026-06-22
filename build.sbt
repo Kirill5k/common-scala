@@ -9,10 +9,11 @@ inThisBuild(
     licenses                            := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
     developers                          := List(Developer("kirill5k", "Kirill", "immotional@aol.com", url("https://github.com/kirill5k"))),
     githubWorkflowPublishTargetBranches := Nil,
-    githubWorkflowJavaVersions          := Seq(JavaSpec.temurin("24")),
-    scalacOptions ++= Seq("-Wunused:all")
+    githubWorkflowJavaVersions          := Seq(JavaSpec.temurin("25"))
   )
 )
+
+githubWorkflowDir := (LocalRootProject / baseDirectory).value / ".github"
 
 val noPublish = Seq(
   publish         := {},
